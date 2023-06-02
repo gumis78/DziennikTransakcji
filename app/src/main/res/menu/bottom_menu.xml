@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<!--
+ W 'id' podajemy identyfikator fragmentu z pliku nawigacyjnego 'main_nav'
+-->
+    <item
+        android:title="Transactions"
+        android:id="@id/transactionsFragment"/>
+
+    <item
+        android:title="Income"
+        android:id="@id/incomeFragment"/>
+
+    <item
+        android:title="Outcome"
+        android:id="@id/outcomeFragment"/>
+
+</menu>

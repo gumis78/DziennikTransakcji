@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/transactionsFragment">
+
+    <fragment
+        android:id="@+id/addFragment"
+        android:name="pl.com.dzienniktransakcji.ui.add_fragment.AddFragment"
+        android:label="fragment_add"
+        tools:layout="@layout/fragment_add" />
+    <fragment
+        android:id="@+id/editFragment"
+        android:name="pl.com.dzienniktransakcji.ui.edit_fragment.EditFragment"
+        android:label="fragment_edit"
+        tools:layout="@layout/fragment_edit" />
+    <fragment
+        android:id="@+id/incomeFragment"
+        android:name="pl.com.dzienniktransakcji.ui.income_fragment.IncomeFragment"
+        android:label="fragment_income"
+        tools:layout="@layout/fragment_income" />
+    <fragment
+        android:id="@+id/outcomeFragment"
+        android:name="pl.com.dzienniktransakcji.ui.outcome_fragment.OutcomeFragment"
+        android:label="fragment_outcome"
+        tools:layout="@layout/fragment_outcome" />
+    <fragment
+        android:id="@+id/transactionsFragment"
+        android:name="pl.com.dzienniktransakcji.ui.transactions_fragment.TransactionsFragment"
+        android:label="fragment_transactions"
+        tools:layout="@layout/fragment_transactions" />
+
+</navigation>
