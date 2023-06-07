@@ -5,14 +5,17 @@
 -->
     <item
         android:title="Transactions"
+        android:icon="@drawable/cart_tick"
         android:id="@id/transactionsFragment"/>
 
     <item
         android:title="Income"
+        android:icon="@drawable/wallet_add"
         android:id="@id/incomeFragment"/>
 
     <item
         android:title="Outcome"
+        android:icon="@drawable/wallet__remove"
         android:id="@id/outcomeFragment"/>
 
 </menu>

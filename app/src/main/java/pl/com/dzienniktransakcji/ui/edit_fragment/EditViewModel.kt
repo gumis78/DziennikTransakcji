@@ -4,5 +4,5 @@ import androidx.lifecycle.ViewModel
 
 class EditViewModel : ViewModel()
 {
-    // TODO: Implement the ViewModel
+    var date = 0L
 }

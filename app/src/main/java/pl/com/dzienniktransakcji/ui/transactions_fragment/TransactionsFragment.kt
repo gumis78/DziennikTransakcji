@@ -1,13 +1,18 @@
 package pl.com.dzienniktransakcji.ui.transactions_fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import pl.com.dzienniktransakcji.MainActivity
 import pl.com.dzienniktransakcji.MainViewModel
+import pl.com.dzienniktransakcji.R
 import pl.com.dzienniktransakcji.data.models.Transaction
 import pl.com.dzienniktransakcji.databinding.FragmentTransactionsBinding
 import pl.com.dzienniktransakcji.ui.adapters.TransactionsAdapter
@@ -20,7 +25,7 @@ class TransactionsFragment : Fragment()
     private val viewModel by viewModels<TransactionsViewModel>()
 
     //View model głównej aktywności - przechowuje metody od baz danych
-    private val mainVM by viewModels<MainViewModel>()
+    private val mainVm by activityViewModels<MainViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View
     {
@@ -36,7 +41,7 @@ class TransactionsFragment : Fragment()
         binding.recyclerView.layoutManager = LinearLayoutManager(requireContext())
 
         //Pobierz i obserwuj (w cyklu życia fragmentu) czy zmieniły się dane
-        val liveData = mainVM.getAllTransactions()
+        val liveData = mainVm.getAllTransactions()
 
         liveData.observe(viewLifecycleOwner)
         { transactionList ->
@@ -44,7 +49,16 @@ class TransactionsFragment : Fragment()
             //Ustaw adapter dla RecyclerView
             val adapter = TransactionsAdapter(transactionList)
             { t:Transaction, p:Int ->
-                //Tu cos wypisac
+
+                //Ustaw transakcję w MainViewModel jako wybraną z listy
+                mainVm.selectTransaction(t)
+                mainVm.zmiennaTestowa = 1
+
+                //Schowaj dolny pasek
+                (requireActivity() as MainActivity).setBottomNavVisibility(false)
+
+                //Przejdź do fragmentu edycji
+                findNavController().navigate(R.id.editFragment)
             }
 
             binding.recyclerView.adapter = adapter

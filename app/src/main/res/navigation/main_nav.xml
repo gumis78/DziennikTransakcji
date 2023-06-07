@@ -9,7 +9,8 @@
         android:id="@+id/addFragment"
         android:name="pl.com.dzienniktransakcji.ui.add_fragment.AddFragment"
         android:label="fragment_add"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add" >
+    </fragment>
     <fragment
         android:id="@+id/editFragment"
         android:name="pl.com.dzienniktransakcji.ui.edit_fragment.EditFragment"

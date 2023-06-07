@@ -2,6 +2,8 @@ package pl.com.dzienniktransakcji
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
@@ -29,8 +31,44 @@ class MainActivity : AppCompatActivity()
         //Powiąż navController (fragmentContainerView) z BottomNavigationView w którym jest menu
         NavigationUI.setupWithNavController(binding.bottomNavigationView, navController)
 
+        //
+        setBottomNavVisibility(viewModel.isBottomNavVisible)
+
+        //
+        binding.addTransactionFb.setOnClickListener()
+        {
+            setBottomNavVisibility(false)
+
+            //Przejdź do fragmentu addFragment
+            navController.navigate(R.id.addFragment)
+        }
 
         val tr1 = Transaction(0,1,15f,"Test",TransactionType.INCOME,TransactionCategory.HOUSEHOLD)
         //viewModel.insertTransaction(tr1)
+    }
+
+    override fun onResume()
+    {
+        super.onResume()
+
+        //
+
+
+        Log.d("LOGGER", "resume")
+    }
+
+    //
+    fun setBottomNavVisibility(visible:Boolean)
+    {
+        viewModel.isBottomNavVisible = visible
+
+        val isVisible = when(visible)
+        {
+            true -> View.VISIBLE
+            else -> View.INVISIBLE
+        }
+
+        binding.cardView.visibility = isVisible
+        binding.addTransactionFb.visibility = isVisible
     }
 }
